@@ -1,0 +1,13 @@
+@mixin clearfix {
+  &::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
+}
+
+@mixin style-link-text($color) {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: $color;
+}
