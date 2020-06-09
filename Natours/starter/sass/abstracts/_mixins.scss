@@ -11,3 +11,50 @@
   text-decoration: none;
   color: $color;
 }
+
+@mixin center-horizontal-vertical {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// MEDIA QUERY MANAGER
+// 0 - 600 PHON
+// 600 - 900 TABLET-PORTRAIT
+// 900 - 1200 TABLET-LANDSCAPE
+// 1200 -1800 DESKTOP -> normal styles.
+// 1800 -> BIG DESKTOP
+
+
+
+@mixin respond-phone {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
+
+/*
+// breakpoints
+- phone
+- tab-port
+- tab-land
+- big-desktop
+*/
+
+// rem does not work in media queries
+// 1 em = 16 px 
+@mixin respond($breakpoint) {
+  @if $breakpoint == phone {
+    @media (max-width: 37.5em) { @content }; // width < 600px
+  }
+  @if $breakpoint == tab-port {
+    @media (max-width: 56.25em) { @content }; // width < 900px
+  }
+  @if $breakpoint == tab-land {
+    @media (max-width: 75em) { @content }; // width < 1200px
+  }
+  @if $breakpoint == big-desktop {
+    @media (min-width: 112.5em) { @content }; // width > 1800px
+  }
+}
